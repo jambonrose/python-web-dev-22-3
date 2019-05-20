@@ -1,0 +1,20 @@
+{% extends parent_template|default:"startup/base.html" %}
+
+{% block title %}
+  {{ block.super }} - Startups
+{% endblock %}
+
+{% block content %}
+  <h2>Startup List</h2>
+  <p><a href="{% url 'startup_create' %}">Add Startup</a></p>
+  <ul>
+    {% for startup in startup_list %}
+      <li>
+        <a href="{{ startup.get_absolute_url }}">
+          {{ startup.name }}</a>
+      </li>
+    {% empty %}
+      <li><em>No Startups Available</em></li>
+    {% endfor %}
+  </ul>
+{% endblock %}
