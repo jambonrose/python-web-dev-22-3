@@ -8,4 +8,11 @@ from django.views.decorators.http import (
 @require_http_methods(["GET", "HEAD", "OPTIONS"])
 def pong(request):
     """Respond to ping requests"""
-    return HttpResponse("pong")
+    if request.method in ["GET", "HEAD"]:
+        return HttpResponse("pong")
+    else:
+        response = HttpResponse()
+        response["Allow"] = ", ".join(
+            ["GET", "HEAD", "OPTIONS"]
+        )
+        return response
