@@ -22,4 +22,5 @@ def pong(request):
 class Status(TemplateView):
     """Provide a basic status page for users"""
 
+    extra_context = {"status": "Good"}
     template_name = "testapp/status.html"
