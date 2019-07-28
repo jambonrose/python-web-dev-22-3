@@ -9,6 +9,7 @@ from organizer import urls as organizer_urls
 from organizer.routers import (
     urlpatterns as organizer_api_urls,
 )
+from testapp import urls as test_urls
 
 from .views import RootApiView
 
@@ -21,6 +22,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include(api_urls)),
     path("blog/", include(blog_urls)),
+    path("", include(test_urls)),
     path("", include(organizer_urls)),
     path(
         "",

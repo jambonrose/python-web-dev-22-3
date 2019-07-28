@@ -1,3 +1,10 @@
-from django.shortcuts import render
+"""Views for the Test app"""
+from django.views import View
 
-# Create your views here.
+
+class Pong(View):
+    """Respond to ping requests"""
+
+    def get(self, request):
+        """Respond to GET Request"""
+        return "pong"
