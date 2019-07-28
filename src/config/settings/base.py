@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     # first party
     "blog.apps.BlogConfig",
     "organizer.apps.OrganizerConfig",
+    "testapp.apps.TestappConfig",
 ]
 
 MIDDLEWARE = [
