@@ -1,5 +1,6 @@
 """Tests that demonstrate how to write tests in Django"""
 from django.test import TestCase
+from django.urls import reverse
 
 
 class DemoTests(TestCase):
@@ -50,3 +51,25 @@ class DemoTests(TestCase):
                 call_method = getattr(self.client, method)
                 response = call_method("/ping/")
                 self.assertEqual(response.status_code, 405)
+
+    def test_status_get(self):
+        """Test the status page"""
+        url = reverse("site_status")
+        self.assertEqual(url, "/status/")
+        response = self.client.get(url)
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "base.html")
+        self.assertTemplateUsed(
+            response, "testapp/base.html"
+        )
+        self.assertTemplateUsed(
+            response, "testapp/status.html"
+        )
+        self.assertIn("status", response.context)
+        self.assertEqual(response.context["status"], "Good")
+        # Django provides its own assertions
+        # https://docs.djangoproject.com/en/2.2/topics/testing/tools/#django.test.SimpleTestCase.assertInHTML
+        self.assertInHTML(
+            "<p>Status is Good</p>",
+            response.content.decode("utf8"),
+        )
