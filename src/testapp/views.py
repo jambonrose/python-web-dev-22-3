@@ -1,4 +1,5 @@
 """Views for the Test app"""
+from django.http import HttpResponse
 from django.views import View
 
 
@@ -7,4 +8,4 @@ class Pong(View):
 
     def get(self, request):
         """Respond to GET Request"""
-        return "pong"
+        return HttpResponse("pong")
