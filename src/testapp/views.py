@@ -1,11 +1,7 @@
 """Views for the Test app"""
 from django.http import HttpResponse
-from django.views import View
 
 
-class Pong(View):
+def pong(request):
     """Respond to ping requests"""
-
-    def get(self, request):
-        """Respond to GET Request"""
-        return HttpResponse("pong")
+    return HttpResponse("pong")
