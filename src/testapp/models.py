@@ -1,3 +1,14 @@
-from django.db import models
+"""Django data models to demonstrate test writing"""
+from django.db.models import CharField, Model
+from django_extensions.db.fields import AutoSlugField
 
-# Create your models here.
+
+class Tag(Model):
+    """Labels to help categorize data"""
+
+    name = CharField(max_length=31)
+    slug = AutoSlugField(
+        help_text="A label for URL config.",
+        max_length=31,
+        populate_from=["name"],
+    )
