@@ -58,13 +58,14 @@ class DemoTests(TestCase):
         self.assertEqual(url, "/status/")
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, "base.html")
-        self.assertTemplateUsed(
-            response, "testapp/base.html"
-        )
-        self.assertTemplateUsed(
-            response, "testapp/status.html"
-        )
+        templates = [
+            "base.html",
+            "testapp/base.html",
+            "testapp/status.html",
+        ]
+        for t_name in templates:
+            with self.subTest(template=t_name):
+                self.assertTemplateUsed(response, t_name)
         self.assertIn("status", response.context)
         self.assertEqual(response.context["status"], "Good")
         # Django provides its own assertions
