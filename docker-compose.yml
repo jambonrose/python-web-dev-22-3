@@ -6,7 +6,7 @@ volumes:
 
 services:
   postgres:
-    image: postgres:10.4-alpine
+    image: postgres:10.9-alpine
     env_file: ./.docker-env
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data

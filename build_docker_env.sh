@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 
-PG_DB=webdev21videos2
+PG_DB=webdev22videos3
 PG_PASSWORD=`head -c 18 /dev/urandom | base64 | tr -dc 'a-zA-Z0-9' | head -c 12`
 PG_SERVICE_NAME=postgres
-PG_USER=webdev21videos2_user
+PG_USER=webdev22videos3_user
 
 echo "POSTGRES_DB=$PG_DB
 POSTGRES_PASSWORD=$PG_PASSWORD

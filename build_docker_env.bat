@@ -1,9 +1,9 @@
 @echo off
 
-set PG_DB=webdev21videos2
+set PG_DB=webdev22videos3
 set PG_PASSWORD=%RANDOM%%RANDOM%%RANDOM%
 set PG_SERVICE_NAME=postgres
-set PG_USER=webdev21videos2_user
+set PG_USER=webdev22videos3_user
 set SKEY=%RANDOM%%RANDOM%%RANDOM%%RANDOM%%RANDOM%%RANDOM%
 
 Echo POSTGRES_DB=%PG_DB% > .docker-env
