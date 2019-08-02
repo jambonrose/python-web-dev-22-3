@@ -25,3 +25,23 @@ class TagModelTestDemo(TestCase):
         Tag.objects.create(**kwargs)
         with self.assertRaises(IntegrityError):
             Tag.objects.create(**kwargs)
+
+    def test_list_order(self):
+        """Are tags ordered by name?
+
+        This test is actually dependent on the database and whether the
+        field is unique. In SQLite3, the order will be alphabetical if
+        the name field is unique.
+
+        Will pass regardless if/once Meta ordering is defined.
+
+        """
+        Tag.objects.create(name="b")
+        Tag.objects.create(name="D")
+        Tag.objects.create(name="c")
+        Tag.objects.create(name="a")
+        tag_name_list = list(
+            Tag.objects.values_list("name", flat=True)
+        )
+        expected_name_list = ["D", "a", "b", "c"]
+        self.assertEqual(tag_name_list, expected_name_list)
