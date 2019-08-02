@@ -12,3 +12,6 @@ class Tag(Model):
         max_length=31,
         populate_from=["name"],
     )
+
+    class Meta:
+        ordering = ["name"]
