@@ -2,9 +2,9 @@
 
 Built during Andrew Pinkham's class on Safari Books Online.
 
-https://docs.djangoproject.com/en/2.1/topics/settings/
-https://docs.djangoproject.com/en/2.1/ref/settings/
-https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
+https://docs.djangoproject.com/en/2.2/topics/settings/
+https://docs.djangoproject.com/en/2.2/ref/settings/
+https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 """
 
 from environ import Env, Path
@@ -74,7 +74,7 @@ WSGI_APPLICATION = "config.wsgi.application"
 
 
 # Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     "default": ENV.db(
@@ -84,7 +84,7 @@ DATABASES = {
 }
 
 # Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
+# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+# https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = "en-us"
 
@@ -117,7 +117,7 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_ROOT = BASE_DIR("runtime", "static")
 STATIC_URL = "/static/"

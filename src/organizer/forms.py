@@ -23,7 +23,7 @@ class SlugCleanMixin:
         This is an oversimplification!!! See the following
         link for how to raise the error correctly.
 
-        https://docs.djangoproject.com/en/2.1/ref/forms/validation/#raising-validationerror
+        https://docs.djangoproject.com/en/2.2/ref/forms/validation/#raising-validationerror
 
         """
         slug = self.cleaned_data["slug"]

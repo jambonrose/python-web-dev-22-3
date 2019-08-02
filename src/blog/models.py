@@ -1,16 +1,16 @@
 """Django data models for news
 
 Django Model Documentation:
-https://docs.djangoproject.com/en/2.1/topics/db/models/
-https://docs.djangoproject.com/en/2.1/ref/models/options/
-https://docs.djangoproject.com/en/2.1/internals/contributing/writing-code/coding-style/#model-style
+https://docs.djangoproject.com/en/2.2/topics/db/models/
+https://docs.djangoproject.com/en/2.2/ref/models/options/
+https://docs.djangoproject.com/en/2.2/internals/contributing/writing-code/coding-style/#model-style
 Django Field Reference:
-https://docs.djangoproject.com/en/2.1/ref/models/fields/
-https://docs.djangoproject.com/en/2.1/ref/models/fields/#charfield
-https://docs.djangoproject.com/en/2.1/ref/models/fields/#datefield
-https://docs.djangoproject.com/en/2.1/ref/models/fields/#manytomanyfield
-https://docs.djangoproject.com/en/2.1/ref/models/fields/#slugfield
-https://docs.djangoproject.com/en/2.1/ref/models/fields/#textfield
+https://docs.djangoproject.com/en/2.2/ref/models/fields/
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#charfield
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#datefield
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#manytomanyfield
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#slugfield
+https://docs.djangoproject.com/en/2.2/ref/models/fields/#textfield
 
 """
 from datetime import date

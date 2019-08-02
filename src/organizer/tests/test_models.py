@@ -168,7 +168,7 @@ class StartupModelTests(TestCase):
     def test_tag_m2m(self):
         """Do Startups have Many-To-Many Tags?
 
-        https://docs.djangoproject.com/en/2.1/ref/models/fields/#field-attribute-reference
+        https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-attribute-reference
 
         Let's have fun with this one! This is not how you'd write this test
         normally, but it does demonstrate some interesting field properties.
@@ -254,7 +254,7 @@ class NewsLinkModelTests(TestCase):
     def test_newslink_startup_fk(self):
         """Does NewsLink have a Foreign Key to Startup?
 
-        https://docs.djangoproject.com/en/2.1/ref/models/fields/#field-attribute-reference
+        https://docs.djangoproject.com/en/2.2/ref/models/fields/#field-attribute-reference
 
         Let's have fun with this one! This is not how you'd write this test
         normally, but it does demonstrate some interesting field properties.

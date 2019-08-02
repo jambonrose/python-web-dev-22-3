@@ -53,7 +53,7 @@ def context_kwarg(path):
 def get_concrete_field_names(Model):
     """Return all of the concrete field names for a Model
 
-    https://docs.djangoproject.com/en/2.1/ref/models/meta/
+    https://docs.djangoproject.com/en/2.2/ref/models/meta/
 
     """
     return [
