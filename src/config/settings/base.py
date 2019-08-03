@@ -9,6 +9,8 @@ https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 from environ import Env, Path
 
+from .. import checks  # noqa: F401
+
 ENV = Env()
 
 BASE_DIR = Path(__file__) - 3
