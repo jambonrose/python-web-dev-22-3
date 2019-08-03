@@ -45,3 +45,8 @@ class TagModelTestDemo(TestCase):
         )
         expected_name_list = ["D", "a", "b", "c"]
         self.assertEqual(tag_name_list, expected_name_list)
+
+    def test_str(self):
+        """Do Tags clearly represent themselves?"""
+        t = Tag.objects.create(name="django")
+        self.assertEqual(str(t), "django")
