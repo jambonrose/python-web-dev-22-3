@@ -3,6 +3,7 @@ from django.db import IntegrityError
 from django.test import TestCase
 
 from ..models import Tag
+from .factories import TagFactory
 
 
 class TagModelTestDemo(TestCase):
@@ -22,9 +23,9 @@ class TagModelTestDemo(TestCase):
     def test_name_uniqueness(self):
         """Are Tags with identical names disallowed?"""
         kwargs = dict(name="a")
-        Tag.objects.create(**kwargs)
+        TagFactory(**kwargs)
         with self.assertRaises(IntegrityError):
-            Tag.objects.create(**kwargs)
+            TagFactory(**kwargs)
 
     def test_list_order(self):
         """Are tags ordered by name?
@@ -36,10 +37,10 @@ class TagModelTestDemo(TestCase):
         Will pass regardless if/once Meta ordering is defined.
 
         """
-        Tag.objects.create(name="b")
-        Tag.objects.create(name="D")
-        Tag.objects.create(name="c")
-        Tag.objects.create(name="a")
+        TagFactory(name="b")
+        TagFactory(name="D")
+        TagFactory(name="c")
+        TagFactory(name="a")
         tag_name_list = list(
             Tag.objects.values_list("name", flat=True)
         )
@@ -48,5 +49,5 @@ class TagModelTestDemo(TestCase):
 
     def test_str(self):
         """Do Tags clearly represent themselves?"""
-        t = Tag.objects.create(name="django")
+        t = TagFactory(name="django")
         self.assertEqual(str(t), "django")
