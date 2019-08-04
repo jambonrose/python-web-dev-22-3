@@ -34,9 +34,7 @@ class AdminSetupMixin:
         """Generate test data for entire suite"""
         User = get_user_model()
         cls.test_user = User.objects.create_superuser(
-            username="testuser",
-            email="admin@example.com",
-            password="password",
+            email="admin@example.com", password="password"
         )
 
 
