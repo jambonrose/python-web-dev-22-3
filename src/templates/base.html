@@ -14,6 +14,18 @@
         to improve your experience and security.
       </p>
     <![endif]-->
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          {% if message.tags %}
+            <li class="{{ message.tags }}">
+          {% else %}
+            <li>
+          {% endif %}
+          {{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     <ul>
       {% if user.is_authenticated %}
         <li><a href="{% url 'auth:logout' %}">
