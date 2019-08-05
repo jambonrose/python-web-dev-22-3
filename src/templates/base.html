@@ -14,6 +14,15 @@
         to improve your experience and security.
       </p>
     <![endif]-->
+    <ul>
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'auth:logout' %}">
+          Log Out</a></li>
+      {% else %}
+        <li><a href="{% url 'auth:login' %}">
+          Log In</a></li>
+      {% endif %}
+    </ul>
     <nav>
       <ul>
         <li><a href="{% url 'post_list' %}">Blog</a></li>
