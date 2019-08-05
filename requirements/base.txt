@@ -1,3 +1,5 @@
+argon2-cffi==19.1.0
+cffi==1.12.3
 django-environ==0.4.5
 django-extensions==2.2.1
 django-improved-user==1.0.0
@@ -5,5 +7,6 @@ django-url-checks==0.2.0
 Django>=2.2,<2.3
 djangorestframework==3.10.2
 ipython==7.7.0
+pycparser==2.19
 pytz==2019.2
 whitenoise==4.1.3
