@@ -113,6 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": AUTH_P + "NumericPasswordValidator"},
 ]
 
+LOGIN_REDIRECT_URL = "site_root"
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
