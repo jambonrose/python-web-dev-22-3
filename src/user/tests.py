@@ -1,5 +1,6 @@
 """Test authentication views"""
 from django.contrib.auth import SESSION_KEY
+from django.urls import reverse
 from test_plus import TestCase
 
 from improved_user.factories import UserFactory
@@ -44,17 +45,12 @@ class AuthenticationViewTests(TestCase):
     def test_logout_get(self):
         """Can users logout via GET request?"""
         with self.login(self.user, password=self.password):
-            response = self.get_check_200("auth:logout")
+            response = self.get("auth:logout")
             self.assertNotIn(
                 SESSION_KEY, self.client.session
             )
-            templates = [
-                "base.html",
-                "registration/base.html",
-                "registration/logged_out.html",
-            ]
-            for t_name in templates:
-                with self.subTest(template=t_name):
-                    self.assertTemplateUsed(
-                        response, t_name
-                    )
+            self.assertRedirects(
+                response,
+                reverse("auth:login"),
+                fetch_redirect_response=False,
+            )
