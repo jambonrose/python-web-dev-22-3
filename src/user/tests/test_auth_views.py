@@ -40,7 +40,16 @@ class AuthenticationViewTests(TestCase):
             },
         )
         self.assertIn(SESSION_KEY, self.client.session)
-        self.assertRedirects(response, "/")
+        self.assertRedirects(
+            response, "/", fetch_redirect_response=False
+        )
+        self.get_check_200(response.url)
+        self.assertInContext("messages")
+        name = self.user.get_short_name()
+        self.assertIn(
+            f"Successfully logged in as {name}",
+            [str(m) for m in self.context["messages"]],
+        )
 
     def test_logout_get(self):
         """Can users logout via GET request?"""
@@ -53,4 +62,10 @@ class AuthenticationViewTests(TestCase):
                 response,
                 reverse("auth:login"),
                 fetch_redirect_response=False,
+            )
+            self.get_check_200(response.url)
+            self.assertInContext("messages")
+            self.assertIn(
+                "Successfully logged out",
+                [str(m) for m in self.context["messages"]],
             )
