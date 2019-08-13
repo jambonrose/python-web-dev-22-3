@@ -1,6 +1,5 @@
 """Root URL Configuration for Startup Organizer Project"""
 from django.contrib import admin
-from django.contrib.auth import urls as django_auth_urls
 from django.urls import include, path
 from django.views.generic import TemplateView
 
@@ -10,6 +9,7 @@ from organizer import urls as organizer_urls
 from organizer.routers import (
     urlpatterns as organizer_api_urls,
 )
+from user import urls as user_urls
 
 from .views import RootApiView
 
@@ -24,10 +24,7 @@ urlpatterns = [
     path("blog/", include(blog_urls)),
     path("", include(organizer_urls)),
     path(
-        "",
-        include(
-            (django_auth_urls, "auth"), namespace="auth"
-        ),
+        "", include((user_urls, "auth"), namespace="auth")
     ),
     path(
         "",
