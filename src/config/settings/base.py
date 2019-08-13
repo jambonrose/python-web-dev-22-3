@@ -113,6 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": AUTH_P + "NumericPasswordValidator"},
 ]
 
+LOGIN_URL = "auth:login"
 LOGIN_REDIRECT_URL = "site_root"
 LOGOUT_REDIRECT_URL = "auth:login"
 
