@@ -28,6 +28,8 @@
     {% endif %}
     <ul>
       {% if user.is_authenticated %}
+        <li><a href="{% url 'auth:account' %}">
+          Manage Account</a></li>
         <li><a href="{% url 'auth:logout' %}">
           Log Out</a></li>
       {% else %}

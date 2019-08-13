@@ -1,0 +1,7 @@
+{% extends parent_template|default:"user/base.html" %}
+
+{% block content %}
+  <a href="{%  url 'auth:password_change' %}">
+    Change you password
+  </a>
+{% endblock %}
