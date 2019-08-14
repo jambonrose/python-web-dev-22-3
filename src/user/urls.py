@@ -9,7 +9,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.views.generic import TemplateView
 
-from .views import PasswordChangeView
+from .views import PasswordChangeView, PasswordResetView
 
 urlpatterns = [
     path(
@@ -37,5 +37,10 @@ urlpatterns = [
         "password_change/",
         PasswordChangeView.as_view(),
         name="password_change",
+    ),
+    path(
+        "password_reset/",
+        PasswordResetView.as_view(),
+        name="password_reset",
     ),
 ]
