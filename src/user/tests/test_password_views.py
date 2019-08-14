@@ -54,36 +54,21 @@ class PasswordViewTests(TestCase):
             "new_password1": newpassword,
             "new_password2": newpassword,
         }
-        confirm_url = reverse("auth:password_change_done")
+        confirm_url = reverse("auth:account")
         with self.login(self.user, password=self.password):
-            r = self.post("auth:password_change", data=data)
+            r = self.post(
+                "auth:password_change",
+                data=data,
+                follow=True,
+            )
             self.assertRedirects(r, confirm_url)
             self.user.refresh_from_db()
             self.assertTrue(
                 self.user.check_password(newpassword),
                 "User's password did not change",
             )
-
-    def test_password_change_done_anonym(self):
-        """Is an anonymous user redirected to login?"""
-        url = reverse("auth:password_change_done")
-        login_url = reverse("auth:login")
-        response = self.get(url)
-        self.assertRedirects(
-            response, f"{login_url}?next={url}"
-        )
-
-    def test_password_change_done_get(self):
-        """Is there a view confirming password change has worked?"""
-        templates = [
-            "registration/password_change_done.html",
-            "registration/base.html",
-            "base.html",
-        ]
-        with self.login(self.user, password=self.password):
-            r = self.get_check_200(
-                "auth:password_change_done"
+            self.assertInContext("messages")
+            self.assertIn(
+                "Password Changed Successfully",
+                [str(m) for m in self.context["messages"]],
             )
-            for t_name in templates:
-                with self.subTest(template=t_name):
-                    self.assertTemplateUsed(r, t_name)
