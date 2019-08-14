@@ -31,3 +31,4 @@ class PasswordChangeView(
 
     success_message = "Password Changed Successfully"
     success_url = reverse_lazy("auth:account")
+    template_name = "user/password_change_form.html"

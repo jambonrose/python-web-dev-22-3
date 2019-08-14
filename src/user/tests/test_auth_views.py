@@ -39,8 +39,8 @@ class AuthenticationViewTests(TestCase):
                 self.assertInContext("form")
                 templates = [
                     "base.html",
-                    "registration/base.html",
-                    "registration/login.html",
+                    "user/base.html",
+                    "user/login.html",
                 ]
                 for t_name in templates:
                     with self.subTest(template=t_name):

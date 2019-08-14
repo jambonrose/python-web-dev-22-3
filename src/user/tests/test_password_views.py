@@ -36,8 +36,8 @@ class PasswordViewTests(TestCase):
     def test_password_change_get(self):
         """Is an authenticated user shown a form?"""
         templates = [
-            "registration/password_change_form.html",
-            "registration/base.html",
+            "user/password_change_form.html",
+            "user/base.html",
             "base.html",
         ]
         with self.login(self.user, password=self.password):
