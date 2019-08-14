@@ -19,37 +19,92 @@ class AuthenticationViewTests(TestCase):
 
     def test_login_get(self):
         """Can users GET a login form?"""
-        response = self.get_check_200("auth:login")
-        self.assertInContext("form")
-        templates = [
-            "base.html",
-            "registration/base.html",
-            "registration/login.html",
+        login_url = reverse("auth:login")
+        blog_url = reverse("post_list")
+        params = [
+            (login_url, False, None),
+            (
+                f"{login_url}?next={blog_url}",
+                True,
+                blog_url,
+            ),
         ]
-        for t_name in templates:
-            with self.subTest(template=t_name):
-                self.assertTemplateUsed(response, t_name)
+        for get_url, extra_field, redirect_url in params:
+            with self.subTest(
+                get=get_url,
+                with_next_field=extra_field,
+                redirect_to=redirect_url,
+            ):
+                response = self.get_check_200(get_url)
+                self.assertInContext("form")
+                templates = [
+                    "base.html",
+                    "registration/base.html",
+                    "registration/login.html",
+                ]
+                for t_name in templates:
+                    with self.subTest(template=t_name):
+                        self.assertTemplateUsed(
+                            response, t_name
+                        )
+                next_field = (
+                    f"<input"
+                    f' type="hidden"'
+                    f' name="next"'
+                    f' value="{blog_url}"'
+                    f">"
+                )
+                if extra_field:
+                    self.assertResponseContains(next_field)
+                else:
+                    self.assertResponseNotContains(
+                        next_field
+                    )
 
     def test_login_post(self):
         """Can users login to the site?"""
-        response = self.post(
-            "auth:login",
-            data={
-                "username": self.user.email,
-                "password": self.password,
-            },
-        )
-        self.assertIn(SESSION_KEY, self.client.session)
-        self.assertRedirects(
-            response, "/", fetch_redirect_response=False
-        )
-        self.get_check_200(response.url)
-        self.assertInContext("messages")
-        name = self.user.get_short_name()
-        self.assertIn(
-            f"Successfully logged in as {name}",
-            [str(m) for m in self.context["messages"]],
-        )
+        login_url = reverse("auth:login")
+        blog_url = reverse("post_list")
+        params = [
+            (login_url, None, reverse("site_root")),
+            (login_url, blog_url, blog_url),
+            (
+                f"{login_url}?next={blog_url}",
+                None,
+                blog_url,
+            ),
+        ]
+        for post_url, extra_data, redirect_url in params:
+            with self.subTest(
+                post=post_url,
+                extra=extra_data,
+                redirect_to=redirect_url,
+            ):
+                data = {
+                    "username": self.user.email,
+                    "password": self.password,
+                }
+                if extra_data:
+                    data["next"] = extra_data
+                response = self.post(post_url, data=data)
+                self.assertIn(
+                    SESSION_KEY, self.client.session
+                )
+                self.assertRedirects(
+                    response,
+                    redirect_url,
+                    fetch_redirect_response=False,
+                )
+                self.get_check_200(response.url)
+                self.assertInContext("messages")
+                name = self.user.get_short_name()
+                self.assertIn(
+                    f"Successfully logged in as {name}",
+                    [
+                        str(m)
+                        for m in self.context["messages"]
+                    ],
+                )
 
     def test_logout_get(self):
         """Can users logout via GET request?"""
