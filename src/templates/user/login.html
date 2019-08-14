@@ -12,4 +12,11 @@
     {% endif %}
     <button type="submit">Log In</button>
   </form>
+  <ul>
+    <li>
+      <a href="{% url 'auth:password_reset' %}">
+        Forgotten password?
+      </a>
+    </li>
+  </ul>
 {% endblock %}

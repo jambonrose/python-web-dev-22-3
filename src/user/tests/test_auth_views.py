@@ -60,6 +60,11 @@ class AuthenticationViewTests(TestCase):
                     self.assertResponseNotContains(
                         next_field
                     )
+                self.assertResponseContains(
+                    f"<a "
+                    f'href="{reverse("auth:password_reset")}">'
+                    f"Forgotten password?</a>"
+                )
 
     def test_login_post(self):
         """Can users login to the site?"""
