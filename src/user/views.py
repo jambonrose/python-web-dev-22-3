@@ -1,4 +1,5 @@
 """Views for User app"""
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
     PasswordChangeView as BasePasswordChangeView,
     PasswordResetConfirmView as BasePasswordResetConfirmView,
@@ -6,6 +7,16 @@ from django.contrib.auth.views import (
 )
 from django.contrib.messages import success
 from django.urls import reverse_lazy
+from django.views.generic import TemplateView
+
+
+class AccountPage(LoginRequiredMixin, TemplateView):
+    """Display page with links to manage account
+
+    For instance, link to page to change password.
+    """
+
+    template_name = "user/account.html"
 
 
 class SuccessMessageMixin:
