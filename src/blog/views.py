@@ -1,4 +1,10 @@
-"""Views for Blog App"""
+"""Views for Blog App
+
+http://ccbv.co.uk/projects/Django/2.2/django.contrib.auth.mixins/PermissionRequiredMixin/
+"""
+from django.contrib.auth.mixins import (
+    PermissionRequiredMixin,
+)
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -43,11 +49,12 @@ class PostObjectMixin:
         )
 
 
-class PostCreate(CreateView):
+class PostCreate(PermissionRequiredMixin, CreateView):
     """Create new blog posts"""
 
     form_class = PostForm
     model = Post
+    permission_required = "blog.add_post"
     template_name = "post/form.html"
     extra_context = {"update": False}
 
@@ -58,9 +65,12 @@ class PostDetail(PostObjectMixin, DetailView):
     template_name = "post/detail.html"
 
 
-class PostDelete(PostObjectMixin, DeleteView):
+class PostDelete(
+    PermissionRequiredMixin, PostObjectMixin, DeleteView
+):
     """Delete a single blog post"""
 
+    permission_required = "blog.delete_post"
     template_name = "post/confirm_delete.html"
     success_url = reverse_lazy("post_list")
 
@@ -72,9 +82,12 @@ class PostList(ListView):
     template_name = "post/list.html"
 
 
-class PostUpdate(PostObjectMixin, UpdateView):
+class PostUpdate(
+    PermissionRequiredMixin, PostObjectMixin, UpdateView
+):
     """Update existing blog posts"""
 
     form_class = PostForm
+    permission_required = "blog.change_post"
     template_name = "post/form.html"
     extra_context = {"update": True}

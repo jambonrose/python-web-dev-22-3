@@ -1,4 +1,10 @@
-"""Views for Organizer App"""
+"""Views for Organizer App
+
+http://ccbv.co.uk/projects/Django/2.2/django.contrib.auth.mixins/PermissionRequiredMixin/
+"""
+from django.contrib.auth.mixins import (
+    PermissionRequiredMixin,
+)
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
@@ -20,6 +26,7 @@ from .view_mixins import (
 
 
 class NewsLinkCreate(
+    PermissionRequiredMixin,
     VerifyStartupFkToUriMixin,
     NewsLinkContextMixin,
     CreateView,
@@ -29,6 +36,7 @@ class NewsLinkCreate(
     extra_context = {"update": False}
     form_class = NewsLinkForm
     model = NewsLink
+    permission_required = "organizer.add_newslink"
     template_name = "newslink/form.html"
 
     def get_initial(self):
@@ -42,10 +50,14 @@ class NewsLinkCreate(
 
 
 class NewsLinkDelete(
-    NewsLinkObjectMixin, NewsLinkContextMixin, DeleteView
+    PermissionRequiredMixin,
+    NewsLinkObjectMixin,
+    NewsLinkContextMixin,
+    DeleteView,
 ):
     """Delete a link to an article about a startup"""
 
+    permission_required = "organizer.delete_newslink"
     template_name = "newslink/confirm_delete.html"
 
     def get_success_url(self):
@@ -71,6 +83,7 @@ class NewsLinkDetail(NewsLinkObjectMixin, RedirectView):
 
 
 class NewsLinkUpdate(
+    PermissionRequiredMixin,
     VerifyStartupFkToUriMixin,
     NewsLinkObjectMixin,
     NewsLinkContextMixin,
@@ -80,6 +93,7 @@ class NewsLinkUpdate(
 
     extra_context = {"update": True}
     form_class = NewsLinkForm
+    permission_required = "organizer.change_newslink"
     template_name = "newslink/form.html"
 
 
@@ -97,45 +111,50 @@ class TagDetail(DetailView):
     template_name = "tag/detail.html"
 
 
-class TagCreate(CreateView):
+class TagCreate(PermissionRequiredMixin, CreateView):
     """Create new Tags via HTML form"""
 
     form_class = TagForm
     model = Tag
+    permission_required = "organizer.add_tag"
     template_name = "tag/form.html"
     extra_context = {"update": False}
 
 
-class TagUpdate(UpdateView):
+class TagUpdate(PermissionRequiredMixin, UpdateView):
     """Update a Tag via HTML form"""
 
     form_class = TagForm
     model = Tag
+    permission_required = "organizer.change_tag"
     template_name = "tag/form.html"
     extra_context = {"update": True}
 
 
-class TagDelete(DeleteView):
+class TagDelete(PermissionRequiredMixin, DeleteView):
     """Confirm and delete a Tag via HTML Form"""
 
     model = Tag
+    permission_required = "organizer.delete_tag"
     template_name = "tag/confirm_delete.html"
     success_url = reverse_lazy("tag_list")
 
 
-class StartupCreate(CreateView):
+class StartupCreate(PermissionRequiredMixin, CreateView):
     """Create new Startups via HTML form"""
 
     form_class = StartupForm
     model = Startup
+    permission_required = "organizer.add_startup"
     template_name = "startup/form.html"
     extra_context = {"update": False}
 
 
-class StartupDelete(DeleteView):
+class StartupDelete(PermissionRequiredMixin, DeleteView):
     """Confirm and delete a Startup via HTML Form"""
 
     model = Startup
+    permission_required = "organizer.delete_startup"
     template_name = "startup/confirm_delete.html"
     success_url = reverse_lazy("startup_list")
 
@@ -154,10 +173,11 @@ class StartupDetail(DetailView):
     template_name = "startup/detail.html"
 
 
-class StartupUpdate(UpdateView):
+class StartupUpdate(PermissionRequiredMixin, UpdateView):
     """Update a Startup via HTML form"""
 
     form_class = StartupForm
     model = Startup
+    permission_required = "organizer.change_startup"
     template_name = "startup/form.html"
     extra_context = {"update": True}
