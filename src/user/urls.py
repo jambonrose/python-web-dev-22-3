@@ -9,7 +9,11 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path
 from django.views.generic import TemplateView
 
-from .views import PasswordChangeView, PasswordResetView
+from .views import (
+    PasswordChangeView,
+    PasswordResetConfirmView,
+    PasswordResetView,
+)
 
 urlpatterns = [
     path(
@@ -42,5 +46,10 @@ urlpatterns = [
         "password_reset/",
         PasswordResetView.as_view(),
         name="password_reset",
+    ),
+    path(
+        "password_reset/<uidb64>/<token>/",
+        PasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
     ),
 ]
