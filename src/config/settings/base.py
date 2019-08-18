@@ -88,6 +88,14 @@ DATABASES = {
 
 AUTH_USER_MODEL = "user.User"
 
+ACCOUNT_ACTIVATION_DAYS = ENV.int(
+    "ACCOUNT_ACTIVATION_DAYS", default=7
+)
+# https://django-registration.readthedocs.io/en/3.0.1/activation-workflow.html#salt-security
+REGISTRATION_SALT = ENV.str(
+    "REGISTRATION_SALT", default="registration"
+)
+
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
