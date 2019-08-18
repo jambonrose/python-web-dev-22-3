@@ -8,6 +8,9 @@ from django.contrib.auth.views import (
 from django.contrib.messages import success
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView
+from django_registration.backends.activation.views import (
+    ActivationView as BaseActivationView,
+)
 
 
 class AccountPage(LoginRequiredMixin, TemplateView):
@@ -17,6 +20,26 @@ class AccountPage(LoginRequiredMixin, TemplateView):
     """
 
     template_name = "user/account.html"
+
+
+class ActivationView(BaseActivationView):
+    """Notify user of activation and direct to login"""
+
+    success_url = reverse_lazy("auth:login")
+
+    def activate(self, *args, **kwargs):
+        """Notify user after activating successfully
+
+        https://github.com/ubernostrum/django-registration/blob/58be01f5858a/src/django_registration/backends/activation/views.py#L129
+        """
+        user = super().activate(*args, **kwargs)
+        success(
+            self.request,
+            "Your account has been activated."
+            " You may now sign-in.",
+            fail_silently=True,
+        )
+        return user
 
 
 class SuccessMessageMixin:

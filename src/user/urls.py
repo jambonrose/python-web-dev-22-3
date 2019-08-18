@@ -12,13 +12,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.urls import path, re_path, reverse_lazy
 from django.views.generic import TemplateView
 from django_registration.backends.activation.views import (
-    ActivationView,
     RegistrationView,
 )
 
 from .forms import RegistrationForm
 from .views import (
     AccountPage,
+    ActivationView,
     PasswordChangeView,
     PasswordResetConfirmView,
     PasswordResetView,
@@ -53,20 +53,9 @@ urlpatterns = [
         PasswordResetConfirmView.as_view(),
         name="password_reset_confirm",
     ),
-    path(
-        "activate/complete/",
-        TemplateView.as_view(
-            template_name="django_registration/activation_complete.html"
-        ),
-        name="django_registration_activation_complete",
-    ),
     re_path(
         r"^activate/(?P<activation_key>[-:\w]+)/$",
-        ActivationView.as_view(
-            success_url=reverse_lazy(
-                "auth:django_registration_activation_complete"
-            )
-        ),
+        ActivationView.as_view(),
         name="django_registration_activate",
     ),
     path(
