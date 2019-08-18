@@ -22,6 +22,13 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include(api_urls)),
     path("blog/", include(blog_urls)),
+    path(
+        "o/",
+        include(
+            "oauth2_provider.urls",
+            namespace="oauth2_provider",
+        ),
+    ),
     path("", include(organizer_urls)),
     path(
         "", include((user_urls, "auth"), namespace="auth")
