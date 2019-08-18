@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     # third party
     "django_extensions",
     "rest_framework",
+    "rest_framework.authtoken",
     "url_checks.apps.UrlChecksConfig",
     # first party
     "blog.apps.BlogConfig",
@@ -124,6 +125,16 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_URL = "auth:login"
 LOGIN_REDIRECT_URL = "site_root"
 LOGOUT_REDIRECT_URL = "auth:login"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ),
+    "DEFAULT_PERMISSION_CLASSES": (
+        "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ),
+}
 
 
 # Internationalization
