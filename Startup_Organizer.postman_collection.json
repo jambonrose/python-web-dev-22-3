@@ -1,0 +1,1525 @@
+{
+	"info": {
+		"_postman_id": "9a72e727-a7d3-415f-a0dc-e56e3ffc22c9",
+		"name": "Startup_Organizer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Demo Token Auth",
+			"item": [
+				{
+					"name": "Create Tag (using Headers)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Token {{django-auth-token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"header token\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/tag/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tag",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Tag (using Headers)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Authorization",
+										"value": "Token {{django-auth-token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"header token\"\n}"
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/tag/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"tag",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:29:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Location",
+									"value": "http://127.0.0.1:8000/api/v1/tag/header-token/"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "100"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"url\": \"http://127.0.0.1:8000/api/v1/tag/header-token/\",\n    \"name\": \"header token\",\n    \"slug\": \"header-token\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Tag (using Authorization tab)",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Token {{django-auth-token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"auth token\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/tag/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tag",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Tag (using Authorization tab)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"auth token\"\n}"
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/tag/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"tag",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:29:45 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Location",
+									"value": "http://127.0.0.1:8000/api/v1/tag/auth-token/"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "94"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"url\": \"http://127.0.0.1:8000/api/v1/tag/auth-token/\",\n    \"name\": \"auth token\",\n    \"slug\": \"auth-token\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "051497d6-d4e2-4e69-8307-b92d52684dee",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "9a549f66-602e-42d4-bd7c-a3e08b959a29",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Configured for Token Auth",
+			"item": [
+				{
+					"name": "Create Tag",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"new-token\"\n}"
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/tag/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"tag",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Tag Copy",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\": \"new-token\"\n}"
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/tag/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"tag",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:21:06 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Location",
+									"value": "http://127.0.0.1:8000/api/v1/tag/new-token/"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "91"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"url\": \"http://127.0.0.1:8000/api/v1/tag/new-token/\",\n    \"name\": \"new-token\",\n    \"slug\": \"new-token\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "apikey",
+				"apikey": [
+					{
+						"key": "value",
+						"value": "Token {{django-auth-token}}",
+						"type": "string"
+					},
+					{
+						"key": "key",
+						"value": "Authorization",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"name": "Demo Password Grant",
+			"item": [
+				{
+					"name": "00 Startup List (No Auth)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/startup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"startup",
+								""
+							]
+						},
+						"description": "Expect to fail"
+					},
+					"response": [
+						{
+							"name": "00 Startup List (No Auth)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/startup/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"startup",
+										""
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Aug 2019 15:49:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "01 Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70b14401-08e0-405c-abec-e65e72c78065",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"access-token\", jsonData.access_token);",
+									"pm.environment.set(\"token_type\", jsonData.token_type);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{pw_client_secret}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{pw_client_id}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "{{email}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{password}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/o/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"o",
+								"token",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "01 Get Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "resource_owner@jambonsw.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "securepassword!",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/o/token/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"o",
+										"token",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 04:03:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"Vc7aL6GLUYyGtbYDyyzx7RRTUXQ0Up\",\n    \"expires_in\": 36000,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"newslink post startup tag\",\n    \"refresh_token\": \"UdNzwloCSA9RELun9ReQOV9xZHLmF6\"\n}"
+						}
+					]
+				},
+				{
+					"name": "02 Startup List",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token_type}} {{access-token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/startup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"startup",
+								""
+							]
+						},
+						"description": "Expect to fail"
+					},
+					"response": [
+						{
+							"name": "02 Startup List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/startup/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"startup",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:37:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "953"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/jambon-software/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/consulting/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/education/\"\n        ],\n        \"name\": \"JamBon Software\",\n        \"slug\": \"jambon-software\",\n        \"description\": \"Web and Mobile Consulting.\\nDjango Tutoring.\\n\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"django@jambonsw.com\",\n        \"website\": \"https://jambonsw.com/\"\n    },\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/true-tickets/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/business-to-business/\",\n            \"http://127.0.0.1:8000/api/v1/tag/distributed-systems/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/ibm-blockchain/\"\n        ],\n        \"name\": \"True Tickets\",\n        \"slug\": \"true-tickets\",\n        \"description\": \"True Tickets make buying, selling, and transferring entertainment tickets simple and safe.\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"not-an-email@true-tickets.com\",\n        \"website\": \"https://true-tickets.com/\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "f4a442e9-1afd-42b7-80a9-d0f9b14b0843",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "84b4350b-9c5a-4e9e-81da-190aff8aa0ab",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Configured for OAuth 2 Password",
+			"item": [
+				{
+					"name": "List Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/blog/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"blog",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Tags",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/blog/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"blog",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:13:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "378"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/blog/2019/8/django-training/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/education/\"\n        ],\n        \"startups\": [\n            \"http://127.0.0.1:8000/api/v1/startup/jambon-software/\"\n        ],\n        \"title\": \"Django Training\",\n        \"slug\": \"django-training\",\n        \"text\": \"Learn Django in a classroom setting with JamBon Software.\",\n        \"pub_date\": \"2019-08-22\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "List Blog Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/startup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"startup",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Blog Posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/startup/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"startup",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 05:05:50 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "953"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/jambon-software/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/consulting/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/education/\"\n        ],\n        \"name\": \"JamBon Software\",\n        \"slug\": \"jambon-software\",\n        \"description\": \"Web and Mobile Consulting.\\nDjango Tutoring.\\n\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"django@jambonsw.com\",\n        \"website\": \"https://jambonsw.com/\"\n    },\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/true-tickets/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/business-to-business/\",\n            \"http://127.0.0.1:8000/api/v1/tag/distributed-systems/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/ibm-blockchain/\"\n        ],\n        \"name\": \"True Tickets\",\n        \"slug\": \"true-tickets\",\n        \"description\": \"True Tickets make buying, selling, and transferring entertainment tickets simple and safe.\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"not-an-email@true-tickets.com\",\n        \"website\": \"https://true-tickets.com/\"\n    }\n]"
+						},
+						{
+							"name": "List Blog Posts",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/startup/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"startup",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:13:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "953"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/jambon-software/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/consulting/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/education/\"\n        ],\n        \"name\": \"JamBon Software\",\n        \"slug\": \"jambon-software\",\n        \"description\": \"Web and Mobile Consulting.\\nDjango Tutoring.\\n\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"django@jambonsw.com\",\n        \"website\": \"https://jambonsw.com/\"\n    },\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/true-tickets/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/business-to-business/\",\n            \"http://127.0.0.1:8000/api/v1/tag/distributed-systems/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/ibm-blockchain/\"\n        ],\n        \"name\": \"True Tickets\",\n        \"slug\": \"true-tickets\",\n        \"description\": \"True Tickets make buying, selling, and transferring entertainment tickets simple and safe.\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"not-an-email@true-tickets.com\",\n        \"website\": \"https://true-tickets.com/\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "accessToken",
+						"value": "TVpuIG2aZLb9vQZ59A6Wd3U8GIjEFO",
+						"type": "string"
+					},
+					{
+						"key": "tokenType",
+						"value": "Bearer",
+						"type": "string"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d8ac0a88-12e8-4594-b21d-f11144fd6520",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "841b7ebb-d083-43e2-8814-1c70f84ccbdb",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Demo Authorization Code Grant",
+			"item": [
+				{
+					"name": "00 Startup List (No Auth)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/startup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"startup",
+								""
+							]
+						},
+						"description": "Expect to fail"
+					},
+					"response": [
+						{
+							"name": "00 Startup List (No Auth)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/startup/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"startup",
+										""
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 21 Aug 2019 15:49:30 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "58"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+						}
+					]
+				},
+				{
+					"name": "01 Authorize Access via Browser",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/o/authorize/?client_id={{code_client_id}}&response_type=code&state={{$randomInt}}",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"o",
+								"authorize",
+								""
+							],
+							"query": [
+								{
+									"key": "client_id",
+									"value": "{{code_client_id}}"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "state",
+									"value": "{{$randomInt}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "02 Get Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "70b14401-08e0-405c-abec-e65e72c78065",
+								"exec": [
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"access-token\", jsonData.access_token);",
+									"pm.environment.set(\"token_type\", jsonData.token_type);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "{{code}}",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{code_client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{code_client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://example.com/",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/o/token/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"o",
+								"token",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "02 Get Token",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "authorization_code",
+											"type": "text"
+										},
+										{
+											"key": "code",
+											"value": "{{code}}",
+											"type": "text"
+										},
+										{
+											"key": "client_id",
+											"value": "{{code_client_id}}",
+											"type": "text"
+										},
+										{
+											"key": "client_secret",
+											"value": "{{code_client_secret}}",
+											"type": "text"
+										},
+										{
+											"key": "redirect_uri",
+											"value": "https://example.com/",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "http://127.0.0.1:8000/o/token/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"o",
+										"token",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 14:33:34 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-store"
+								},
+								{
+									"key": "Pragma",
+									"value": "no-cache"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "184"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"llTk7GPdl1tI8HGFPjWjNdwwELnSDa\",\n    \"expires_in\": 36000,\n    \"token_type\": \"Bearer\",\n    \"scope\": \"newslink post startup tag\",\n    \"refresh_token\": \"cT10hAWBr3CpHa02brys6OhVn0j0zs\"\n}"
+						}
+					]
+				},
+				{
+					"name": "02 Startup List",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "{{token_type}} {{access-token}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/v1/startup/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"v1",
+								"startup",
+								""
+							]
+						},
+						"description": "Expect to fail"
+					},
+					"response": [
+						{
+							"name": "02 Startup List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://127.0.0.1:8000/api/v1/startup/",
+									"protocol": "http",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "8000",
+									"path": [
+										"api",
+										"v1",
+										"startup",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 22 Aug 2019 13:37:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.7.4"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, POST, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "SAMEORIGIN"
+								},
+								{
+									"key": "Content-Length",
+									"value": "953"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/jambon-software/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/consulting/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/education/\"\n        ],\n        \"name\": \"JamBon Software\",\n        \"slug\": \"jambon-software\",\n        \"description\": \"Web and Mobile Consulting.\\nDjango Tutoring.\\n\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"django@jambonsw.com\",\n        \"website\": \"https://jambonsw.com/\"\n    },\n    {\n        \"url\": \"http://127.0.0.1:8000/api/v1/startup/true-tickets/\",\n        \"tags\": [\n            \"http://127.0.0.1:8000/api/v1/tag/business-to-business/\",\n            \"http://127.0.0.1:8000/api/v1/tag/distributed-systems/\",\n            \"http://127.0.0.1:8000/api/v1/tag/django/\",\n            \"http://127.0.0.1:8000/api/v1/tag/ibm-blockchain/\"\n        ],\n        \"name\": \"True Tickets\",\n        \"slug\": \"true-tickets\",\n        \"description\": \"True Tickets make buying, selling, and transferring entertainment tickets simple and safe.\",\n        \"founded_date\": \"2013-01-18\",\n        \"contact\": \"not-an-email@true-tickets.com\",\n        \"website\": \"https://true-tickets.com/\"\n    }\n]"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "516c6553-d616-4696-9c62-f1b8f137b98c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "598ce6dd-78a6-4a26-aaf8-1264306cf8a0",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "c9b7be7b-6014-4d8b-857a-5b93d44b11f4",
+			"key": "email",
+			"value": "resource_owner@jambonsw.com",
+			"type": "string"
+		},
+		{
+			"id": "a5f675e4-dbe9-418f-a35d-f02e26451e1d",
+			"key": "password",
+			"value": "securepassword!",
+			"type": "string"
+		}
+	]
+}
