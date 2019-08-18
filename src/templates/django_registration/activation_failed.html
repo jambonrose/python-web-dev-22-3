@@ -1,0 +1,11 @@
+{% extends parent_template|default:'django_registration/base.html' %}
+
+{% block title %}
+{{ block.super }} - Account Activation Failed
+{% endblock %}
+
+{% block content %}
+  <div>
+    <p>This activation link is no longer valid.</p>
+  </div>
+{% endblock %}

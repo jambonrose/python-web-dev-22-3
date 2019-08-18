@@ -1,0 +1,14 @@
+{% extends parent_template|default:'django_registration/base.html' %}
+
+{% block title %}
+{{ block.super }} - Account Created
+{% endblock %}
+
+{% block content %}
+  <div>
+    <p>Your account has been created!</p>
+    <p>Please check your email for
+      the activation link.</p>
+    <p>You are free to close this window.</p>
+  </div>
+{% endblock %}

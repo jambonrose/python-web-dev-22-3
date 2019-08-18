@@ -1,0 +1,1 @@
+{{ user.get_short_name }}: Activate your new account
