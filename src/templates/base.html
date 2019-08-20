@@ -31,7 +31,7 @@
         <li><a href="{% url 'auth:logout' %}">
           Log Out</a></li>
       {% else %}
-        <li><a href="{% url 'auth:login' %}">
+        <li><a href="{% url 'auth:login' %}?next={{ request.path }}">
           Log In</a></li>
       {% endif %}
     </ul>
