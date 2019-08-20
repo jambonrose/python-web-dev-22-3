@@ -6,18 +6,24 @@
 
 {% block content %}
   <h2>{{ startup.name }}</h2>
+  {% if perms.organizer.change_startup or perms.organizer.delete_startup %}
   <ul>
-    <li>
-      <a href="{{ startup.get_update_url }}">
-        Update
-      </a>
-    </li>
-    <li>
-      <a href="{{ startup.get_delete_url }}">
-        Delete
-      </a>
-    </li>
+    {% if perms.organizer.change_startup %}
+      <li>
+        <a href="{{ startup.get_update_url }}">
+          Update
+        </a>
+      </li>
+    {% endif %}
+    {% if perms.organizer.delete_startup %}
+      <li>
+        <a href="{{ startup.get_delete_url }}">
+          Delete
+        </a>
+      </li>
+    {% endif %}
   </ul>
+  {% endif %}
   <dl>
     <dt>Date Founded</dt>
       <dd>{{ startup.founded_date|date:"F jS, Y" }}</dd>
@@ -37,18 +43,37 @@
   </dl>
   {{ startup.description|linebreaks }}
   <section>
-    <p><a href="{{ startup.get_newslink_create_url }}">
-      Add link to article
-    </a></p>
+    {% if perms.organizer.add_newslink %}
+      <p>
+        <a href="{{ startup.get_newslink_create_url }}">
+          Add link to article
+        </a>
+      </p>
+    {% endif %}
     <ul>
       {% for newslink in startup.newslink_set.all %}
         <li>
           <a href="{{ newslink.link }}">
-            {{ newslink.title|title }}</a>
-          <a href="{{ newslink.get_update_url }}">
-            [Modify Link]</a>
-          <a href="{{ newslink.get_delete_url }}">
-            [Delete Link]</a>
+            {{ newslink.title|title }}
+          </a>
+          {% if perms.organizer.change_newslink or perms.organizer.delete_newslink %}
+            <ul>
+              {% if perms.organizer.change_newslink %}
+                <li>
+                  <a href="{{ newslink.get_update_url }}">
+                    Modify Link
+                  </a>
+                </li>
+              {% endif %}
+              {% if perms.organizer.delete_newslink %}
+                <li>
+                  <a href="{{ newslink.get_delete_url }}">
+                    Delete Link
+                  </a>
+                </li>
+              {% endif %}
+            </ul>
+          {% endif %}
         </li>
       {% endfor %}
     </ul>

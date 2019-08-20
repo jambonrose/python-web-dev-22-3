@@ -16,18 +16,24 @@
       </p>
     </header>
     {{ post.text|linebreaks }}
-    <ul>
-      <li>
-        <a href="{{ post.get_update_url }}">
-          Update
-        </a>
-      </li>
-      <li>
-        <a href="{{ post.get_delete_url }}">
-          Delete
-        </a>
-      </li>
-    </ul>
+    {% if perms.blog.change_post or perms.blog.delete_post %}
+      <ul>
+        {% if perms.blog.change_post %}
+          <li>
+            <a href="{{ post.get_update_url }}">
+              Edit
+            </a>
+          </li>
+        {% endif %}
+        {% if perms.blog.delete_post %}
+          <li>
+            <a href="{{ post.get_delete_url }}">
+              Delete
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    {% endif %}
     {% if post.startups.all or post.tags.all %}
       <footer>
         {% with startup_list=post.startups.all %}

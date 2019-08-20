@@ -6,18 +6,24 @@
 
 {% block content %}
   <h2>{{ tag.name|title }}</h2>
-  <ul>
-    <li>
-      <a href="{{ tag.get_update_url }}">
-        Update
-      </a>
-    </li>
-    <li>
-      <a href="{{ tag.get_delete_url }}">
-        Delete
-      </a>
-    </li>
-  </ul>
+  {% if perms.organizer.change_tag or perms.organizer.delete_tag %}
+    <ul>
+      {% if perms.organizer.change_tag %}
+        <li>
+          <a href="{{ tag.get_update_url }}">
+            Update
+          </a>
+        </li>
+      {% endif %}
+      {% if perms.organizer.delete_tag %}
+      <li>
+        <a href="{{ tag.get_delete_url }}">
+          Delete
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+  {% endif %}
   {% if tag.startup_set.all %}
     <section>
       <h3>Startup{{ tag.startup_set.count|pluralize }}</h3>
