@@ -21,6 +21,7 @@ class TagViewSet(ModelViewSet):
 
     lookup_field = "slug"
     queryset = Tag.objects.all()
+    required_scopes = ["tag"]
     serializer_class = TagSerializer
 
 
@@ -29,6 +30,7 @@ class StartupViewSet(ModelViewSet):
 
     lookup_field = "slug"
     queryset = Startup.objects.all()
+    required_scopes = ["startup"]
     serializer_class = StartupSerializer
 
     @action(detail=True, methods=["HEAD", "GET", "POST"])
@@ -57,6 +59,7 @@ class NewsLinkViewSet(ModelViewSet):
     """A set of views for the Startup model"""
 
     queryset = NewsLink.objects.all()
+    required_scopes = ["newslink"]
     serializer_class = NewsLinkSerializer
 
     def get_object(self):

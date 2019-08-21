@@ -10,6 +10,7 @@ class PostViewSet(ModelViewSet):
     """A set of views for Post model"""
 
     queryset = Post.objects.all()
+    required_scopes = ["post"]
     serializer_class = PostSerializer
 
     def get_object(self):

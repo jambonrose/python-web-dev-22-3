@@ -14,9 +14,15 @@ from rest_framework.reverse import reverse
 from rest_framework.status import HTTP_200_OK
 from rest_framework.views import APIView
 
+from oauth2_provider.contrib.rest_framework.permissions import (
+    IsAuthenticatedOrTokenHasScope,
+)
+
 
 class RootApiView(APIView):
     """Direct users to other API endpoints"""
+
+    permission_classes = [IsAuthenticatedOrTokenHasScope]
 
     def get(self, request, *args, **kwargs):
         """Build & display links to other endpoints"""

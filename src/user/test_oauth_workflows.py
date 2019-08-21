@@ -79,7 +79,7 @@ class TestOAuthRoutes(TestCase):
                     "state": "random_state_string",
                     # put in form by Django
                     "redirect_uri": "http://thirdparty.com/exchange/",
-                    "scope": "read write",
+                    "scope": "newslink post startup tag",
                     "allow": "Authorize",
                 },
             )
