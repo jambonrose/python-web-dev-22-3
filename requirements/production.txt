@@ -3,3 +3,4 @@
 Brotli==1.0.7
 gunicorn==19.9.0
 psycopg2>=2.8,<2.9 --no-binary psycopg2
+pylibmc==1.6.1

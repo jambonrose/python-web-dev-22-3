@@ -6,7 +6,9 @@ ENV PYTHONUNBUFFERED 1
 RUN python3.7 -m pip install -U pip setuptools
 
 COPY requirements /tmp/requirements
-RUN python3.7 -m pip install -U --no-cache-dir -r /tmp/requirements/development.txt
+RUN python3.7 -m pip install -U --no-cache-dir \
+    -r /tmp/requirements/development.txt \
+    pylibmc==1.6.1
 
 COPY docker/django/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh

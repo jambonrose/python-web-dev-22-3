@@ -5,6 +5,9 @@ volumes:
   postgres_backup_dev: {}
 
 services:
+  memcached:
+    image: memcached:1.5.16
+
   postgres:
     image: postgres:10.9-alpine
     env_file: ./.docker-env
@@ -18,6 +21,7 @@ services:
       context: .
       dockerfile: ./docker/django/Dockerfile
     depends_on:
+      - memcached
       - postgres
     env_file: ./.docker-env
     ports:
