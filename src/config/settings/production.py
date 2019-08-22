@@ -5,8 +5,6 @@ from .base import *  # noqa: F401 F403
 # PRODUCTION SETTINGS
 ######################################################################
 
-ALLOWED_HOSTS = [".herokuapp.com"]
-
 ADMINS = MANAGERS = [
     # ('Your Name', 'name@email.com'),
 ]
