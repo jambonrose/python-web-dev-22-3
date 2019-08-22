@@ -6,7 +6,7 @@ INSTALLED_APPS.append("debug_toolbar")  # noqa: F405
 DEBUG = ENV.bool("DEBUG", default=True)  # noqa: F405
 
 MIDDLEWARE.insert(  # noqa: F405
-    4, "debug_toolbar.middleware.DebugToolbarMiddleware"
+    3, "debug_toolbar.middleware.DebugToolbarMiddleware"
 )
 
 
