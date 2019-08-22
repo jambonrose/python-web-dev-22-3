@@ -78,7 +78,9 @@ class PostDelete(
 class PostList(ListView):
     """Display a list of blog Posts"""
 
-    model = Post
+    queryset = Post.objects.prefetch_related(
+        "startups"
+    ).prefetch_related("tags")
     template_name = "post/list.html"
 
 
