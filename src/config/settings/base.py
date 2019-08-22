@@ -229,6 +229,7 @@ STATIC_URL = "/static/"
 STATICFILES_STORAGE = (
     "django.contrib.staticfiles.storage.StaticFilesStorage"
 )
+STATICFILES_DIRS = [BASE_DIR("static_content")]
 
 ##################
 # EMAIL SETTINGS #
