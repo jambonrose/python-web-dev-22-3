@@ -90,6 +90,55 @@ DATABASES = {
     )
 }
 
+
+def get_memcache_config():
+    """Load config from ENV, or assume Heroku deploy
+
+    https://devcenter.heroku.com/articles/memcachier#django
+    """
+    if ENV.get_value("MEMCACHE_URL", default=None):
+        return ENV.cache("MEMCACHE_URL")
+    location = ENV.get_value(
+        "MEMCACHIER_SERVERS", default=None
+    )
+    if location:
+        return {
+            "BACKEND": "django.core.cache.backends.memcached.PyLibMCCache",
+            "TIMEOUT": None,  # default key expiration, NOT connection timeout
+            "LOCATION": ENV.str("MEMCACHIER_SERVERS"),
+            "OPTIONS": {
+                "binary": True,
+                "username": ENV.str("MEMCACHIER_USERNAME"),
+                "password": ENV.str("MEMCACHIER_PASSWORD"),
+                "behaviors": {
+                    # Enable faster IO
+                    "no_block": True,
+                    "tcp_nodelay": True,
+                    # Keep connection alive
+                    "tcp_keepalive": True,
+                    # Timeout settings
+                    "connect_timeout": 2000,  # ms
+                    "send_timeout": 750 * 1000,  # us
+                    "receive_timeout": 750 * 1000,  # us
+                    "_poll_timeout": 2000,  # ms
+                    # Better failover
+                    "ketama": True,
+                    "remove_failed": 1,
+                    "retry_timeout": 2,
+                    "dead_timeout": 30,
+                },
+            },
+        }
+    return {
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache"
+    }
+
+
+CACHE_MIDDLEWARE_KEY_PREFIX = "startuporganizer"
+CACHE_MIDDLEWARE_SECONDS = 60
+
+CACHES = {"default": get_memcache_config()}
+
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
 
