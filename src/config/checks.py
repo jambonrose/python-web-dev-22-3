@@ -17,7 +17,13 @@ def check_model_str(app_configs=None, **kwargs):
     problem_models = [
         model
         for app in configs
-        if not app.name.startswith("django.contrib")
+        if not app.name.startswith(
+            (
+                "corsheaders",
+                "django.contrib",
+                "oauth2_provider",
+            )
+        )
         for model in app.get_models()
         if "__str__" not in model.__dict__
     ]
