@@ -233,6 +233,7 @@ STATICFILES_STORAGE = (
     "django.contrib.staticfiles.storage.StaticFilesStorage"
 )
 STATICFILES_DIRS = [BASE_DIR("static_content")]
+WHITENOISE_ROOT = BASE_DIR("static_root")
 
 ##################
 # EMAIL SETTINGS #
