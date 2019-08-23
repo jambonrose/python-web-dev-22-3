@@ -100,6 +100,7 @@ class NewsLinkUpdate(
 class TagList(ListView):
     """Display a list of Tags"""
 
+    paginate_by = 3  # 3 items per page
     queryset = Tag.objects.all()
     template_name = "tag/list.html"
 
