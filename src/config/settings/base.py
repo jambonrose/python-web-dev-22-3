@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "oauth2_provider",
     "corsheaders",
-    "url_checks.apps.UrlChecksConfig",
+    # "url_checks.apps.UrlChecksConfig",
     # first party
     "blog.apps.BlogConfig",
     "organizer.apps.OrganizerConfig",
