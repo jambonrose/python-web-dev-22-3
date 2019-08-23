@@ -1,4 +1,6 @@
 argon2-cffi==19.1.0
+boto3==1.9.215
+botocore==1.12.215
 certifi==2019.6.16
 cffi==1.12.3
 chardet==3.0.4
@@ -9,14 +11,18 @@ django-extensions==2.2.1
 django-improved-user==1.0.0
 django-oauth-toolkit==1.2.0
 django-registration==3.0.1
+django-storages==1.7.1
 django-url-checks==0.2.0
 Django>=2.2,<2.3
 djangorestframework==3.10.2
+docutils==0.15.2
 idna==2.8
 ipython==7.7.0
+jmespath==0.9.4
 oauthlib==3.1.0
 pycparser==2.19
 pytz==2019.2
 requests==2.22.0
+s3transfer==0.2.1
 urllib3==1.25.3
 whitenoise==4.1.3

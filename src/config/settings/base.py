@@ -238,10 +238,35 @@ STATICFILES_STORAGE = (
 STATICFILES_DIRS = [BASE_DIR("static_content")]
 WHITENOISE_ROOT = BASE_DIR("static_root")
 
+# Media Files Storage
+MEDIA_ROOT = ""
+DEFAULT_FILE_STORAGE = ENV.str(
+    "MEDIA_FILE_STORAGE",
+    default="storages.backends.s3boto3.S3Boto3Storage",
+)
+AWS_ACCESS_KEY_ID = ENV.str(
+    "AWS_ACCESS_KEY_ID", default=None
+)
+AWS_SECRET_ACCESS_KEY = ENV.str(
+    "AWS_SECRET_ACCESS_KEY", default=None
+)
+AWS_S3_REGION_NAME = ENV.str(
+    "AWS_S3_REGION_NAME", default=None
+)
+AWS_STORAGE_BUCKET_NAME = ENV.str(
+    "AWS_STORAGE_BUCKET_NAME", default=None
+)
+AWS_DEFAULT_ACL = ENV.str("AWS_DEFAULT_ACL", default=None)
+AWS_S3_ENCRYPTION = ENV.bool(
+    "AWS_S3_ENCRYPTION", default=False
+)
+AWS_S3_CUSTOM_DOMAIN = ENV.str(
+    "AWS_S3_CUSTOM_DOMAIN", default=None
+)
+
 ##################
 # EMAIL SETTINGS #
 ##################
-
 EMAIL_BACKEND = ENV.str(
     "EMAIL_BACKEND",
     default="django.core.mail.backends.console.EmailBackend",
