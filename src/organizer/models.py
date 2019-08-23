@@ -24,6 +24,7 @@ from django.db.models import (
     CharField,
     DateField,
     EmailField,
+    FileField,
     ForeignKey,
     ManyToManyField,
     Model,
@@ -79,6 +80,8 @@ class Startup(Model):
         unique=True,
         help_text="A label for URL config.",
     )
+    # https://docs.djangoproject.com/en/2.2/ref/models/fields/#filefield
+    logo = FileField(null=True)
     description = TextField()
     founded_date = DateField("date founded")
     contact = EmailField()
