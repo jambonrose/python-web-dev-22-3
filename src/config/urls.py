@@ -1,6 +1,10 @@
 """Root URL Configuration for Startup Organizer Project"""
 from django.conf import settings
 from django.contrib import admin
+from django.contrib.sitemaps.views import (
+    index as site_index_view,
+    sitemap as sitemap_view,
+)
 from django.urls import include, path
 from django.views.generic import TemplateView
 
@@ -13,12 +17,14 @@ from organizer.routers import (
 )
 from user import urls as user_urls
 
+from .sitemaps import sitemaps as sitemaps_dict
 from .views import RootApiView
 
 root_api_url = [
     path("", RootApiView.as_view(), name="api-root")
 ]
 api_urls = root_api_url + blog_api_urls + organizer_api_urls
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -33,6 +39,18 @@ urlpatterns = [
         ),
     ),
     path("rss/", Rss2PostFeed(), name="post_rss_feed"),
+    path(
+        "sitemap.xml",
+        site_index_view,
+        {"sitemaps": sitemaps_dict},
+        name="sitemap",
+    ),
+    path(
+        "sitemap-<section>.xml",
+        sitemap_view,
+        {"sitemaps": sitemaps_dict},
+        name="django.contrib.sitemaps.views.sitemap",
+    ),
     path("", include(organizer_urls)),
     path(
         "", include((user_urls, "auth"), namespace="auth")
