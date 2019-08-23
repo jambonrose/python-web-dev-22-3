@@ -1,0 +1,25 @@
+version: "3.7"
+
+volumes:
+  redis_data: {}
+
+services:
+  redis:
+    image: redis:5.0-buster
+    env_file: ./.docker-env
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+
+  starlette:
+    init: true
+    build:
+      context: .
+      dockerfile: ./docker/starlette/Dockerfile
+    depends_on:
+      - redis
+    env_file: ./.docker-env
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
