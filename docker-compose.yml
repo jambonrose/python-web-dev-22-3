@@ -3,10 +3,17 @@ version: '3.7'
 volumes:
   postgres_data_dev: {}
   postgres_backup_dev: {}
+  redis_data: {}
 
 services:
   memcached:
     image: memcached:1.5.16
+
+  redis:
+    image: redis:5.0.5-buster
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
 
   postgres:
     image: postgres:10.9-alpine
@@ -16,6 +23,7 @@ services:
       - postgres_backup_dev:/backups
 
   django:
+    &django
     init: true
     build:
       context: .
@@ -30,14 +38,32 @@ services:
       - ./src:/app
 
   jupyter:
-    init: true
-    build:
-      context: .
-      dockerfile: ./docker/jupyter/Dockerfile
+    <<: *django
     depends_on:
       - postgres
-    env_file: ./.docker-env
     ports:
       - "8888:8888"
-    volumes:
-      - ./src:/app
+    command: jupyter_entrypoint.sh
+
+
+  celeryworker:
+    <<: *django
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: celery -A config worker -l INFO
+
+  celerybeat:
+    <<: *django
+    depends_on:
+      - redis
+      - postgres
+    ports: []
+    command: /start-celerybeat
+
+  flower:
+    <<: *django
+    ports:
+      - "5555:5555"
+    command: /start-flower
