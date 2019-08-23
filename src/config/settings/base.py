@@ -149,10 +149,27 @@ STATICFILES_STORAGE = (
     "django.contrib.staticfiles.storage.StaticFilesStorage"
 )
 
-# EMail configuration
+##################
+# EMAIL SETTINGS #
+##################
+
 EMAIL_BACKEND = ENV.str(
     "EMAIL_BACKEND",
     default="django.core.mail.backends.console.EmailBackend",
+)
+
+DEFAULT_FROM_EMAIL = ENV.str(
+    "DEFAULT_FROM_EMAIL", default=""
+)
+SERVER_EMAIL = ENV.str("SERVER_EMAIL", default="")
+
+EMAIL_HOST = ENV.str("EMAIL_HOST", default="")
+EMAIL_PORT = ENV.int("EMAIL_PORT", default=587)
+EMAIL_USE_TLS = True
+
+EMAIL_HOST_USER = ENV.str("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = ENV.str(
+    "EMAIL_HOST_PASSWORD", default=""
 )
 
 NOTEBOOK_ARGUMENTS = [
