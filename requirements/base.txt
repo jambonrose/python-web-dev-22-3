@@ -1,0 +1,15 @@
+aioredis==1.2.0
+async-timeout==3.0.1
+attrs==18.2.0
+Click==7.0
+gunicorn==19.9.0
+h11==0.8.1
+hiredis==1.0.0
+httptools==0.0.11
+pyotp==2.2.7
+pytz==2018.9
+starlette==0.11.4
+ujson==1.35
+uvicorn==0.4.4
+uvloop==0.12.1
+websockets==7.0
