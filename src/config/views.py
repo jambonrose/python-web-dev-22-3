@@ -9,6 +9,7 @@ would overcomplicate the work we're doing, so it's going
 here instead.
 """
 
+from django.http import HttpResponse
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework.status import HTTP_200_OK
@@ -17,6 +18,14 @@ from rest_framework.views import APIView
 from oauth2_provider.contrib.rest_framework.permissions import (
     IsAuthenticatedOrTokenHasScope,
 )
+
+from .celery import debug_task
+
+
+def test_celery(request):
+    """Use Celery debug task"""
+    debug_task.delay("Hello from Celery")
+    return HttpResponse("Hello from Django")
 
 
 class RootApiView(APIView):

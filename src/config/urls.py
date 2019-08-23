@@ -18,7 +18,7 @@ from organizer.routers import (
 from user import urls as user_urls
 
 from .sitemaps import sitemaps as sitemaps_dict
-from .views import RootApiView
+from .views import RootApiView, test_celery
 
 root_api_url = [
     path("", RootApiView.as_view(), name="api-root")
@@ -51,6 +51,7 @@ urlpatterns = [
         {"sitemaps": sitemaps_dict},
         name="django.contrib.sitemaps.views.sitemap",
     ),
+    path("test/", test_celery),
     path("", include(organizer_urls)),
     path(
         "", include((user_urls, "auth"), namespace="auth")
