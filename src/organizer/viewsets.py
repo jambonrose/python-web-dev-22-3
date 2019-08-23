@@ -1,6 +1,7 @@
 """Viewsets for the Organizer App"""
 from django.shortcuts import get_object_or_404
 from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.status import (
     HTTP_204_NO_CONTENT,
@@ -20,6 +21,7 @@ class TagViewSet(ModelViewSet):
     """A set of views for the Tag model"""
 
     lookup_field = "slug"
+    pagination_class = PageNumberPagination
     queryset = Tag.objects.all()
     required_scopes = ["tag"]
     serializer_class = TagSerializer

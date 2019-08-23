@@ -1,5 +1,7 @@
 """Viewsets for the Blog app"""
 from django.shortcuts import get_object_or_404
+from rest_framework.filters import OrderingFilter
+from rest_framework.pagination import CursorPagination
 from rest_framework.viewsets import ModelViewSet
 
 from .models import Post
@@ -9,6 +11,10 @@ from .serializers import PostSerializer
 class PostViewSet(ModelViewSet):
     """A set of views for Post model"""
 
+    filter_backends = [OrderingFilter]
+    ordering = "-pub_date"
+    ordering_fields = ["pub_date"]
+    pagination_class = CursorPagination
     queryset = Post.objects.all()
     required_scopes = ["post"]
     serializer_class = PostSerializer
