@@ -87,3 +87,12 @@ class Post(Model):
                 "slug": self.slug,
             },
         )
+
+    def short_text(self):
+        """Generate short blurb based on text"""
+        if len(self.text) > 20:
+            short = " ".join(self.text.split()[:20])
+            short += " ..."
+        else:
+            short = self.text
+        return short

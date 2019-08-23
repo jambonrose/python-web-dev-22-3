@@ -5,6 +5,7 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 
 from blog import urls as blog_urls
+from blog.feeds import AtomPostFeed, Rss2PostFeed
 from blog.routers import urlpatterns as blog_api_urls
 from organizer import urls as organizer_urls
 from organizer.routers import (
@@ -22,6 +23,7 @@ api_urls = root_api_url + blog_api_urls + organizer_api_urls
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/v1/", include(api_urls)),
+    path("atom/", AtomPostFeed(), name="post_atom_feed"),
     path("blog/", include(blog_urls)),
     path(
         "o/",
@@ -30,6 +32,7 @@ urlpatterns = [
             namespace="oauth2_provider",
         ),
     ),
+    path("rss/", Rss2PostFeed(), name="post_rss_feed"),
     path("", include(organizer_urls)),
     path(
         "", include((user_urls, "auth"), namespace="auth")
